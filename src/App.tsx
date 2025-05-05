@@ -19,7 +19,8 @@ export const App: React.FC = () => {
       <h1>Items with Pagination</h1>
 
       <p className="lead" data-cy="info">
-        Page 1 (items 1 - 5 of 42)
+        Page {currentPage} (items {startIndex === 0 ? 1 : startIndex + 1} -{' '}
+        {endIndex > 42 ? '42' : endIndex} of 42)
       </p>
 
       <div className="form-group row">
@@ -53,7 +54,7 @@ export const App: React.FC = () => {
       <ul>
         {currentItems.map((item, index) => (
           <li data-cy="item" key={startIndex + index}>
-            Item {item}
+            {item}
           </li>
         ))}
       </ul>
