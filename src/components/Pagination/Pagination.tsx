@@ -18,13 +18,6 @@ export const Pagination: React.FC<Props> = ({
   const tabsLength: number = Math.ceil(total / perPage);
   const tabsList = getNumbers(1, tabsLength);
 
-  const startIndex: number = (currentPage - 1) * perPage;
-  const endIndex: number = startIndex + perPage;
-  const currentItems: number[] = getNumbers(1, total).slice(
-    startIndex,
-    endIndex,
-  );
-
   return (
     <>
       {/* Move this markup to Pagination */}
@@ -87,14 +80,6 @@ export const Pagination: React.FC<Props> = ({
             »
           </a>
         </li>
-      </ul>
-
-      <ul>
-        {currentItems.map((item, index) => (
-          <li data-cy="item" key={startIndex + index}>
-            Item {item}
-          </li>
-        ))}
       </ul>
     </>
   );

@@ -10,6 +10,10 @@ export const App: React.FC = () => {
   const [perPage, setPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
 
+  const startIndex: number = (currentPage - 1) * perPage;
+  const endIndex: number = startIndex + perPage;
+  const currentItems: string[] = items.slice(startIndex, endIndex);
+
   return (
     <div className="container">
       <h1>Items with Pagination</h1>
@@ -46,6 +50,13 @@ export const App: React.FC = () => {
         currentPage={currentPage} /* optional with 1 by default */
         onPageChange={page => setCurrentPage(page)}
       />
+      <ul>
+        {currentItems.map((item, index) => (
+          <li data-cy="item" key={startIndex + index}>
+            Item {item}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
